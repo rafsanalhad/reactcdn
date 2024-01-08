@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+    
+      function MyApp(props) {
+        const students = ['kamu', 'wibu', 'siapa'];
+        const [anjay, useAnjay] = React.useState('Wibu');
+        const [likes, setLikes] = React.useState(0);
+
+        function wibuAnjay(e) {
+            e.preventDefault();
+            useAnjay('kamu wibu yah');
+            setLikes(likes + 1);
+        }
+        return (
+            <div>
+                <h1>Hello, world! {props.name}</h1>
+                <a href="" onClick={wibuAnjay}>Anjay {anjay} ({likes})</a>
+                <ul>
+                   {
+                    students.map((student) => (
+                        <li key={student}>{student}</li>
+                    
+                    ))
+                   }
+                </ul>
+            </div>
+        );
+
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp name="anjay"/>);
+
+    </script>
+  </body>
+</html>
